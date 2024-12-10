@@ -2,7 +2,9 @@
   "pages": [
     "pages/home/home",
     "pages/mine/mine",
-    "pages/product/product"
+    "pages/product/product",
+    "pages/category/category",
+    "pages/ManageProduct/ManageProduct"
   ],
   "window": {
     "navigationBarTextStyle": "black",

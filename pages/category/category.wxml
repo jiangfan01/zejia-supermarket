@@ -1,0 +1,31 @@
+<view class="container">
+    <!-- 页面头部 -->
+    <view class="header">
+        <button class="add-btn" bindtap="showAddModal">新增分类</button>
+    </view>
+
+    <!-- 分类列表 -->
+    <view class="list">
+        <block wx:for="{{sideMenu}}" wx:key="index">
+            <view class="list-item">
+                <text class="category-name">{{item}}</text>
+                <view class="action-btns">
+                    <button class="edit-btn" bindtap="editCategory" data-index="{{index}}">编辑</button>
+                    <button class="delete-btn" bindtap="deleteCategory" data-index="{{index}}">删除</button>
+                </view>
+            </view>
+        </block>
+    </view>
+
+    <!-- 弹窗：新增/编辑分类 -->
+    <view class="modal" hidden="{{!isModalVisible}}">
+        <view class="modal-content">
+            <view class="modal-header">{{modalTitle}}</view>
+            <input class="modal-input" placeholder="请输入分类名称" value="{{newCategoryName}}" bindinput="onInputChange"/>
+            <view class="modal-actions">
+                <button class="modal-btn cancel" bindtap="cancelModal">取消</button>
+                <button class="modal-btn confirm" bindtap="confirmModal">确认</button>
+            </view>
+        </view>
+    </view>
+</view>

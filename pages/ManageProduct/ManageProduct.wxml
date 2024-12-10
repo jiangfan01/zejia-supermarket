@@ -1,0 +1,30 @@
+<!-- pages/product/product.wxml -->
+<view class="container">
+    <tabs current="{{currentTab}}" bind:change="handleTabChange">
+        <tab title="销售中" index="0"></tab>
+        <tab title="已下架" index="1"></tab>
+    </tabs>
+
+    <view class="category-section">
+        <view class="category-title">商品分类</view>
+        <view class="category-list">
+            <block wx:for="{{categoryList}}" wx:key="index">
+                <view class="category-item" bindtap="handleCategoryChange" data-category="{{item}}">
+                    {{item}}
+                </view>
+            </block>
+        </view>
+    </view>
+
+    <view class="product-list">
+        <view class="product-header">
+            <button class="add-btn" bindtap="handleAddProduct">添加商品</button>
+        </view>
+
+        <view wx:for="{{filteredProducts}}" wx:key="id" class="product-item">
+            <text>{{item.name}} - {{item.category}} - {{item.status}}</text>
+            <button class="edit-btn" bindtap="handleEditProduct" data-id="{{item.id}}">编辑</button>
+            <button class="delete-btn" bindtap="handleDeleteProduct" data-id="{{item.id}}">删除</button>
+        </view>
+    </view>
+</view>

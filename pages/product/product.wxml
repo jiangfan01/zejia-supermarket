@@ -1,0 +1,93 @@
+<scroll-view scroll-y="true">
+    <view class="container">
+        <!-- Header Section -->
+        <view class="header">
+            <view class="supermarket-name">
+                <text>{{supermarketName}}</text>
+                <view class="product-control" bindtap="handleProductControlTap">
+                    <van-icon name="setting-o" color="#67c1b5"/>
+                    <text>操作商品</text>
+                </view>
+            </view>
+
+            <!-- Search Bar -->
+            <view class="search">
+                <van-search value="{{ value }}" placeholder="搜索商品" shape="round"/>
+            </view>
+        </view>
+
+        <!-- Content Section -->
+        <view class="content">
+            <!-- Tab Bar -->
+            <view class="subtitle">
+                <van-tabs active="{{ active }}" bind:change="onChange" ellipsis="false" class="tabs" color="#67c1b5"
+                          title-active-color="#67c1b5">
+                    <!--  销售中-->
+                    <van-tab title="销售中">
+                        <view class="goods">
+                            <view class="side">
+                                <block wx:for="{{sideMenu}}" wx:key="index">
+                                    <view class="side-item {{currentIndex === index ? 'chose' : ''}}"
+                                          data-index="{{index}}" bindtap="handleSideMenuItemTap">
+                                        <text>{{item}}</text>
+                                    </view>
+                                </block>
+                                <view class="category-control">
+                                    <view class="category-control-icon">
+                                        <van-icon name="setting-o" color="#67c1b5"/>
+                                    </view>
+                                    <view class="category-control-text" bindtap="handleCategoryControlTap">分类管理
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="goods-list">
+                                <block wx:for="{{goodsListToShow}}" wx:key="id">
+                                    <view class="product-item">
+                                        <image class="product-img" src="{{item.image}}" mode="aspectFill"/>
+                                        <view class="product-info">
+                                            <text class="product-name">{{item.name}}</text>
+                                            <text class="product-price">￥{{item.price}}</text>
+                                        </view>
+                                    </view>
+                                </block>
+                            </view>
+                        </view>
+                    </van-tab>
+                    <!--  已下架-->
+                    <van-tab title="已下架">
+                        <view class="goods">
+                            <view class="side">
+                                <block wx:for="{{sideMenu}}" wx:key="index">
+                                    <view class="side-item {{currentIndex === index ? 'chose' : ''}}"
+                                          data-index="{{index}}" bindtap="handleSideMenuItemTap">
+                                        <text>{{item}}</text>
+                                    </view>
+                                </block>
+                                <view class="category-control">
+                                    <view class="category-control-icon">
+                                        <van-icon name="setting-o" color="#67c1b5"/>
+                                    </view>
+                                    <view class="category-control-text" bindtap="handleCategoryControlTap">分类管理
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="goods-list">
+                                <block wx:for="{{goodsListToShow}}" wx:key="id">
+                                    <view class="product-item">
+                                        <image class="product-img" src="{{item.image}}" mode="aspectFill"/>
+                                        <view class="product-info">
+                                            <text class="product-name">{{item.name}}</text>
+                                            <text class="product-price">￥{{item.price}}</text>
+                                        </view>
+                                    </view>
+                                </block>
+                            </view>
+                        </view>
+                    </van-tab>
+                </van-tabs>
+            </view>
+
+
+        </view>
+    </view>
+</scroll-view>

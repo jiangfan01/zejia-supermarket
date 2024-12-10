@@ -1,0 +1,41 @@
+<scroll-view scroll-y="true">
+    <view class="container">
+        <view class="header">
+            <block>
+                <view class="supermarket">
+                    <view class="supermarket-title">{{supermarket.name}}</view>
+                </view>
+            </block>
+            <block>
+                <view class="location" wx:if="{{location || address}}">{{ location || address }}</view>
+                <view class="location" wx:else>定位中</view>
+            </block>
+        </view>
+
+        <view class="search">
+            <van-search value="{{ value }}" placeholder="搜索商品" shape="round"/>
+        </view>
+
+        <view class="content">
+            <view class="subtitle">
+                <text class="active">商品</text>
+                <text>测试</text>
+            </view>
+
+            <view class="goods-list">
+                <!-- 渲染商品列表 -->
+                <block wx:for="{{ goodsList }}" wx:key="id">
+                    <view class="product-item">
+                        <view class="product-img">
+                            <image src="{{item.image}}" mode="aspectFill"/>
+                        </view>
+                        <view class="product-info">
+                            <text class="product-name">{{item.name}}</text>
+                            <text class="product-price">￥{{item.price}}</text>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+</scroll-view>
